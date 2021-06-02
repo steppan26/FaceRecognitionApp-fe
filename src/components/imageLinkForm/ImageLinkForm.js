@@ -6,7 +6,7 @@ const ImageLinkForm = () =>{
     return(
         <div>
             <p>
-                {'This Magic Brain will detect faces in your pictures. Give it a try!'}
+                {'This Magic Brain app will detect faces in your pictures. Give it a try!'}
             </p>
             <div className="center">
                 <input type="text" />
