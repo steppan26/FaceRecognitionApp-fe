@@ -1,0 +1,13 @@
+.bounding-box {
+    position: absolute;
+    box-shadow: 0 0 0 3px blue inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.faceRecognition-wrapper {
+    position: absolute;
+    margin-top: 2em;
+}
