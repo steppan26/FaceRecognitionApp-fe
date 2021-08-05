@@ -7,12 +7,9 @@ import Rank from './components/rank/Rank'
 import Register from './components/register/Register'
 import Particles from 'react-particles-js';
 import ImageLinkForm from './components/imageLinkForm/ImageLinkForm'
-import Clarifai from 'clarifai';
 import './App.css';
 
-const app = new Clarifai.App({
-  apiKey: '8509e0668a58483db493b84a27c67428'
-});
+
 
 
 const particlesOptions = {
@@ -99,9 +96,14 @@ class App extends Component {
 
   onButtonSubmit = () =>{
     this.setState({imageUrl: this.state.input})
-    app.models.predict(
-      Clarifai.FACE_DETECT_MODEL,
-      this.state.input)
+    fetch('http://localhost:3000/imageurl', { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
+      method: 'post',
+      headers: {'content-Type': 'application/json'},
+      body: JSON.stringify({
+          input : this.state.input
+      })
+    })
+    .then(response => response.json())
     .then( response => { // get the response which gets passed into the calculateFaceLocation function which in turn returns an object which gets passed into the displayFaceBox function to apply the result to the box state
       if (response) {
         fetch('http://localhost:3000/image', {
@@ -115,6 +117,7 @@ class App extends Component {
         .then(count => {
           this.setState(Object.assign(this.state.user, { entries: count }))
         })
+        .catch(console.log)
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
     })
