@@ -19,7 +19,7 @@ class SignIn extends Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('http://localhost:3000/signin', {
+        fetch('https://smart-brain-faceapp1.herokuapp.com/signin', {
             method: 'post',
             headers: {'content-Type': 'application/json'},
             body: JSON.stringify({

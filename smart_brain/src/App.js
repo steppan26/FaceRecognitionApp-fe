@@ -96,7 +96,7 @@ class App extends Component {
 
   onButtonSubmit = () =>{
     this.setState({imageUrl: this.state.input})
-    fetch('http://localhost:3000/imageurl', { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
+    fetch('https://smart-brain-faceapp1.herokuapp.com/imageurl', { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({
@@ -106,7 +106,7 @@ class App extends Component {
     .then(response => response.json())
     .then( response => { // get the response which gets passed into the calculateFaceLocation function which in turn returns an object which gets passed into the displayFaceBox function to apply the result to the box state
       if (response) {
-        fetch('http://localhost:3000/image', {
+        fetch('https://smart-brain-faceapp1.herokuapp.com/image', {
           method: 'put',
           headers: {'content-Type': 'application/json'},
           body: JSON.stringify({

@@ -23,7 +23,7 @@ class Register extends Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('http://localhost:3000/register', {
+        fetch('https://smart-brain-faceapp1.herokuapp.com/register', {
             method: 'post',
             headers: {'content-Type': 'application/json'},
             body: JSON.stringify({
