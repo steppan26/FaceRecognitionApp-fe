@@ -1,5 +1,4 @@
 const Clarifai = require('clarifai');
-const { response } = require('express');
 
 // This is the api key for the Clarifai face detection api. This key gets added to app
 const app = new Clarifai.App({
