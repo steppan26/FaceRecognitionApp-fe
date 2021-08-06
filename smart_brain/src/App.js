@@ -104,7 +104,7 @@ class App extends Component {
       })
     })
     .then(response => response.json())
-    .then( response => { // get the response which gets passed into the calculateFaceLocation function which in turn returns an object which gets passed into the displayFaceBox function to apply the result to the box state
+    .then(response => { // get the response which gets passed into the calculateFaceLocation function which in turn returns an object which gets passed into the displayFaceBox function to apply the result to the box state
       if (response) {
         fetch('https://smart-brain-faceapp1.herokuapp.com/image', {
           method: 'put',
