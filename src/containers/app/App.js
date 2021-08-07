@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Navigation from './components/navigation/Navigation'
-import FaceRecognition from './components/faceRecognition/FaceRecognition'
-import Logo from './components/logo/Logo'
-import SignIn from './components/signIn/SignIn'
-import Rank from './components/rank/Rank'
-import Register from './components/register/Register'
+import Navigation from '../../components/navigation/Navigation'
+import FaceRecognition from '../../components/faceRecognition/FaceRecognition'
+import Logo from '../../components/logo/Logo'
+import SignIn from '../../components/signIn/SignIn'
+import Rank from '../../components/rank/Rank'
+import Register from '../../components/register/Register'
+
 import Particles from 'react-particles-js';
-import ImageLinkForm from './components/imageLinkForm/ImageLinkForm'
+import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
-
-
 
 
 const particlesOptions = {
