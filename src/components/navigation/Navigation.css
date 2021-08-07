@@ -1,13 +1,30 @@
 .nav{
     display: flex;
-    justify-content: flex-end;
-    padding-right: 1em;
-    text-decoration: underline;
+    justify-content: center;
     color: black;
     font-size: 1.5em;
     cursor: pointer;
 }
 
-.nav:hover{
+.btnsWrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav>p:hover{
     color: gray ;
+}
+
+.nav>p{
+    padding: 0 1em;
+    margin: 0.5em 0;
+}
+
+.nav>h2{
+    margin: 0;
+    font-size: 2rem;
+}
+
+.pushRight {
+    padding-left: auto;
 }
