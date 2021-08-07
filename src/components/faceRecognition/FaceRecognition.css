@@ -10,7 +10,7 @@
 .faceRecognition-wrapper {
     position: absolute;
     margin-top: 2em;
-    box-shadow: 2px 2px 1px 2px rgb(70, 69, 69);
+    box-shadow: 0.5em 0.5em 1em 0.2em rgba(70, 69, 69, 0.4) ;
 }
 
 .imageWrapper{

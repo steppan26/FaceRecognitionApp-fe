@@ -5,7 +5,6 @@ import Logo from '../../components/logo/Logo'
 import SignIn from '../../components/signIn/SignIn'
 import Rank from '../../components/rank/Rank'
 import Register from '../../components/register/Register'
-
 import Particles from 'react-particles-js';
 import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
@@ -14,10 +13,10 @@ import './App.css';
 const particlesOptions = {
   particles: {
     number: {
-      value: 10,
+      value: 20,
       density: {
         enable: true,
-        value_area: 600,
+        value_area: 200,
       }
     },
     color: {
@@ -34,6 +33,7 @@ const initialState = {
   box: {},
   route: 'SignIn',
   isSignedIn: false,
+  isMenuOpen: false,
   user: {
     id: '',
     name: "",
@@ -51,6 +51,7 @@ class App extends Component {
       box: {},
       route: 'SignIn',
       isSignedIn: false,
+      isMenuOpen: false,
       user: {
         id: '',
         name: "",
@@ -132,15 +133,18 @@ class App extends Component {
     this.setState({route: route})
   }
 
+  toggleMenu = (x) =>{
+    console.log(this.state.isMenuOpen)
+    this.setState({isMenuOpen: !this.state.isMenuOpen})
+  }
+
   render(){
-    const { isSignedIn, imageUrl, route, box } = this.state // destructure states to avoid having to repeatedly type this.state.
+    const { isSignedIn, imageUrl, route, box, isMenuOpen } = this.state // destructure states to avoid having to repeatedly type this.state.
     return (
       <div className="App">
-        <Particles className="particles"
-          params={particlesOptions} />
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
         { route === 'home'
           ? <div>
+            <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
             <Logo />
             <Rank name={this.state.user.name} entries={this.state.user.entries} />
             <ImageLinkForm
@@ -148,6 +152,7 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
+            <Particles className="particles" params={particlesOptions} />
           </div>
           : ( route === 'SignIn'
           ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>

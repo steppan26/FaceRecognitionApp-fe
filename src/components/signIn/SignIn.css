@@ -285,6 +285,17 @@
     margin-left: auto;
 }
 
+
+.signInTitle{
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.input-box{
+    background-color: rgba(34, 37, 65, 0.2);
+    width: 15em;
+}
+
 @media screen and (min-width: 30em) {
     .pb3-ns {
         padding-bottom: 1rem;

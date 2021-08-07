@@ -7,10 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: rgb(93,228,255);
-background: radial-gradient(circle, rgba(93,228,255,1) 0%, rgba(187,255,255,1) 38%, rgba(93,228,255,1) 100%);
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
+  background: radial-gradient(circle, rgba(93,228,255,1) 0%, rgb(154, 248, 248) 38%, rgba(93,228,255,1) 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:auto ;
+  height: 100vh;
 }
 
 button {

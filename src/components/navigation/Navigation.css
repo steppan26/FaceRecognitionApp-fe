@@ -1,14 +1,37 @@
 .nav{
+    position: absolute;
     display: flex;
     justify-content: center;
     color: black;
     font-size: 1.5em;
     cursor: pointer;
+    width: 100vw;
 }
 
 .btnsWrapper{
     display: flex;
     justify-content: flex-end;
+}
+
+.navMenu{
+    height: auto;
+    width: auto;
+    background-color: rgba(58, 116, 124, 1);
+    position: absolute;
+    padding: 0em 1.5em;
+    border: 1px solid rgb(5, 26, 27);
+    margin-top: none;
+    border-radius: 0 0 30% 30%;
+    box-shadow: 0 0.5em 1.7em 0.65em rgba(5, 26, 27, 0.486);
+
+}
+
+.menu{
+    margin-top: 0.5rem;
+}
+
+.signOut{
+    margin-top: 2em;
 }
 
 .nav>p:hover{
