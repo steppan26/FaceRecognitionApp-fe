@@ -125,7 +125,9 @@ class App extends Component {
   }
 
   onRouteChange = (route) =>{
+    this.setState({isMenuOpen: false})
     if (route === 'SignOut'){
+      this.setState({route: "SignIn"})
       this.setState(initialState)
       console.log(initialState)
     } else if (route === 'home'){
@@ -145,7 +147,7 @@ class App extends Component {
       <div className="App">
         { route === 'home'
           ? <div>
-              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignOut"/>
               <Logo />
               <Rank name={this.state.user.name} entries={this.state.user.entries} />
               <ImageLinkForm
@@ -157,11 +159,11 @@ class App extends Component {
             </div>
           : ( route === 'SignIn'
               ? <div>
-                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="Register"/>
                   <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
               </div>
               : <div>
-                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignIn"/>
                   <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
                 </div>
             )
