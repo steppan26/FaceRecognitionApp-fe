@@ -1,7 +1,4 @@
-.Tilt{
-    margin-left: none;
-}
-
-.Tilt-inner>img{
-    width: 100%;
+.logo{
+    margin: 5em 0 2em 0;
+    width: 5em;
 }

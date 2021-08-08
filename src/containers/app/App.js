@@ -127,6 +127,7 @@ class App extends Component {
   onRouteChange = (route) =>{
     if (route === 'SignOut'){
       this.setState(initialState)
+      console.log(initialState)
     } else if (route === 'home'){
       this.setState({isSignedIn: true})
     }
@@ -144,20 +145,26 @@ class App extends Component {
       <div className="App">
         { route === 'home'
           ? <div>
-            <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
-            <Logo />
-            <Rank name={this.state.user.name} entries={this.state.user.entries} />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
-            <Particles className="particles" params={particlesOptions} />
-          </div>
+              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+              <Logo />
+              <Rank name={this.state.user.name} entries={this.state.user.entries} />
+              <ImageLinkForm
+                onInputChange={this.onInputChange}
+                onButtonSubmit={this.onButtonSubmit}
+              />
+              <FaceRecognition box={box} imageUrl={imageUrl} />
+              <Particles className="particles" params={particlesOptions} />
+            </div>
           : ( route === 'SignIn'
-          ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          )
+              ? <div>
+                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+                  <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+              </div>
+              : <div>
+                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen}/>
+                  <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+                </div>
+            )
         }
       </div>
     );

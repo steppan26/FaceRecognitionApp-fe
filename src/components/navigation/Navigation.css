@@ -16,13 +16,15 @@
 .navMenu{
     height: auto;
     width: auto;
-    background-color: rgba(58, 116, 124, 1);
+    background-color: rgb(91, 185, 197);
     position: absolute;
-    padding: 0em 1.5em;
-    border: 1px solid rgb(5, 26, 27);
+    padding: 0em 1em;
+    border: 0.3em double rgba(8, 42, 44, 0.289);
+    border-top: none;
     margin-top: none;
     border-radius: 0 0 30% 30%;
-    box-shadow: 0 0.5em 1.7em 0.65em rgba(5, 26, 27, 0.486);
+    /* box-shadow: 0 0.5em 1.7em 0.65em rgba(5, 26, 27, 0.486); */
+    box-shadow: 0 0.5em 6em 4em rgba(140, 185, 206, 0.767);
 
 }
 

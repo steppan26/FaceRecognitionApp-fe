@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Register.css'
 
 class Register extends Component {
     constructor(props) {
@@ -48,43 +49,50 @@ class Register extends Component {
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                             <legend className="f1 fw6 ph0 mh0">Register</legend>
                             <div className="mt3">
-                                <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                                <label className="db fw6 lh-copy f6" htmlFor="name"></label>
                                 <input
-                                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                    className="input-box pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                     type="text"
                                     name="name"
                                     id="name"
                                     onChange={this.onNameChange}
+                                    placeholder="NAME"
                                 />
                             </div>
                             <div className="mt3">
-                                <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                                <label className="db fw6 lh-copy f6" htmlFor="email-address"></label>
                                 <input
-                                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                    className="input-box pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                     type="email"
                                     name="email-address"
                                     id="email-address"
                                     onChange={this.onEmailChange}
+                                    placeholder="EMAIL"
+
                                 />
                             </div>
                             <div className="mv3">
-                                <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                                <label className="db fw6 lh-copy f6" htmlFor="password"></label>
                                 <input
-                                    className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                    className="input-box pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                     type="password"
                                     name="password"
                                     id="password"
                                     onChange={this.onPasswordChange}
+                                    placeholder="PASSWORD"
+
                                 />
                             </div>
                         </fieldset>
                         <div className="">
                             <input
-                                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                                 type="submit"
                                 value="Register"
                                 onClick={this.onSubmitSignIn}
                             />
+                            <p onClick={() => this.props.onRouteChange('SignIn')} className="f6 link dim black db pointer">Go to sign in</p>
+
                         </div>
                     </div>
                 </main>
