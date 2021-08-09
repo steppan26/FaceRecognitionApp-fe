@@ -17,6 +17,7 @@
 
 .navMenu{
     display: flex;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     font-size: 3em;
