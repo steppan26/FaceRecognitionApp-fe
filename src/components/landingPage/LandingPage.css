@@ -28,7 +28,41 @@
 
 .quote{
     color: var(--clr-text-primary);
-    padding-top: 1rem;
+    padding: 1rem 1rem 0 1rem;
+    font-size: 0.9rem;
+}
+
+.cta{
+    margin-top: 2em;
+    border: 4px double var(--clr-primary-main);
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.ctaTabs{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.tabUnselected{
+    font-weight: 200;
+    box-shadow: 0px 1px 2px 2px rgba(137, 158, 158, 0.5) ;
+    border-bottom: 1px solid rgba(137, 158, 158, 0.3) inset;
+    background-color: rgba(82, 96, 100, 0.15);
+}
+
+.tabSelected{
+    font-weight: 700;
+    background-color: transparent;
+}
+
+.tab{
+    text-transform: uppercase;
+    flex-grow: 1;
+    padding: 0.5em 0;
+
 }
 
 @media only screen and (min-width: 450px){

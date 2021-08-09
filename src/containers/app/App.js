@@ -95,6 +95,8 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
+  
+
   onButtonSubmit = () =>{
     this.setState({imageUrl: this.state.input})
     fetch('https://smart-brain-faceapp1.herokuapp.com/imageurl', { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
@@ -158,7 +160,7 @@ class App extends Component {
               <Particles className="particles" params={particlesOptions} />
             </div>
           : <div>
-              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection={route}/>
+              {/* <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection={route}/> */}
               <LandingPage onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
             </div>}
             </div>

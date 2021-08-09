@@ -43,7 +43,7 @@ class Register extends Component {
     }
     render() {
         return(
-            <article className="signInWrapper br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+            <article className="signInWrapper br3 ba b--black-10 mt4 w-100 w-50-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
                         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -91,8 +91,6 @@ class Register extends Component {
                                 value="Register"
                                 onClick={this.onSubmitSignIn}
                             />
-                            <p onClick={() => this.props.onRouteChange('SignIn')} className="f6 link dim black db pointer">Go to sign in</p>
-
                         </div>
                     </div>
                 </main>
