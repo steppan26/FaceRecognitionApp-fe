@@ -292,7 +292,7 @@
 }
 
 .input-box{
-    background-color: rgba(34, 37, 65, 0.2);
+    background-color: rgba(34, 37, 65, 0.25);
     width: 15em;
 }
 
@@ -311,6 +311,10 @@
     }
 }
 
+.signInWrapper{
+    border: none;
+}
+
 @media screen and (min-width: 30em) and (max-width: 60em) {
     .w-50-m {
         width: 50%;
@@ -320,5 +324,11 @@
 @media screen and (min-width: 60em) {
     .w-25-l {
         width: 25%;
+    }
+}
+
+@media only screen and (min-width: 450px){
+    .signInWrapper{
+        border: 1px solid rgb(145, 181, 201);
     }
 }

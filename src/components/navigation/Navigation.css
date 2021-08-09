@@ -1,7 +1,11 @@
 .nav{
     display: flex;
     justify-content: flex-end;
-    padding: 0.5em 1.5em;
+    margin: 0.5rem 0;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+
 }
 
 
@@ -19,7 +23,7 @@
     height: 100vh;
     width: 100vw;
     background-color: rgb(235, 250, 252);
-    position: absolute;
+    position: fixed;
     margin: none;
     top: 0;
     left: 0;
@@ -30,14 +34,15 @@
 }
 
 .menu{
-    margin-top: 0.5rem;
+    margin-right: 1rem;
     width: 2rem;
-    z-index: 2;
+    z-index: 3;
+    opacity: 45%;
 }
 
-.signOut{
+.menuItem{
     margin-top: 2em;
-    text-shadow: 4px 4px 2px rgb(148, 226, 240);
+    text-shadow: 4px 4px 2px var(--clr-primary-main);
 }
 
 .nav>p:hover{

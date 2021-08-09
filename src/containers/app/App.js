@@ -8,6 +8,7 @@ import Register from '../../components/register/Register'
 import Particles from 'react-particles-js';
 import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
+import LandingPage from '../../components/landingPage/LandingPage';
 
 
 const particlesOptions = {
@@ -136,8 +137,7 @@ class App extends Component {
     this.setState({route: route})
   }
 
-  toggleMenu = (x) =>{
-    console.log(this.state.isMenuOpen)
+  toggleMenu = () =>{
     this.setState({isMenuOpen: !this.state.isMenuOpen})
   }
 
@@ -157,18 +157,11 @@ class App extends Component {
               <FaceRecognition box={box} imageUrl={imageUrl} />
               <Particles className="particles" params={particlesOptions} />
             </div>
-          : ( route === 'SignIn'
-              ? <div>
-                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="Register"/>
-                  <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-              </div>
-              : <div>
-                  <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignIn"/>
-                  <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-                </div>
-            )
-        }
-      </div>
+          : <div>
+              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection={route}/>
+              <LandingPage onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
+            </div>}
+            </div>
     );
   }
 }
