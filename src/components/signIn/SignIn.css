@@ -289,12 +289,25 @@
 .signInTitle{
     font-weight: 700;
     text-transform: capitalize;
+    text-align: left;
 }
 
 .input-box{
     background-color: rgba(34, 37, 65, 0.25);
     width: 15em;
     margin-bottom: 0;
+}
+
+.signInWrapper{
+    border: none;
+}
+
+.loginErrorMsg{
+    opacity: 0%;
+    color: red;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (min-width: 30em) {
@@ -312,19 +325,7 @@
     }
 }
 
-.signInWrapper{
-    border: none;
-}
-
-.loginErrorMsg{
-    opacity: 0%;
-    color: red;
-    font-size: 0.8em;
-    margin: 0;
-    padding: 0;
-}
-
-@media screen and (min-width: 30em) and (max-width: 60em) {
+@media screen and (max-width: 60em) {
     .w-50-m {
         width: 50%;
     }
@@ -336,7 +337,7 @@
     }
 }
 
-@media only screen and (min-width: 450px){
+@media only screen and (min-width: 560px){
     .signInWrapper{
         border: 1px solid rgb(145, 181, 201);
     }

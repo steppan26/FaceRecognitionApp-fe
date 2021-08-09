@@ -1,11 +1,12 @@
 .nav{
     display: flex;
     justify-content: flex-end;
-    margin: 0.5rem 0;
+    margin: 1.5rem 0 1.5rem 0;
     position: fixed;
     z-index: 2;
     width: 100%;
-
+    top: 0;
+    left: 0;
 }
 
 
@@ -34,22 +35,25 @@
 }
 
 .menu{
-    margin-right: 1rem;
-    width: 2rem;
+    cursor: pointer;
+    margin-right: 1.3rem;
+    width: 1.7rem;
     z-index: 3;
     opacity: 45%;
 }
 
 .menuItem{
     margin-top: 2em;
-    text-shadow: 4px 4px 2px var(--clr-primary-main);
+    text-shadow: 4px 4px 2px var(--clr-secondary-accent);
 }
 
 .nav>p:hover{
+    cursor: pointer;
     color: gray ;
 }
 
 .nav>p{
+    cursor: pointer;
     padding: 0 1em;
     margin: 0.5em 0;
 }

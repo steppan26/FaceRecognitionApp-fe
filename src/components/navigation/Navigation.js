@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navigation.css';
-import menuIcon from './menuHamburger.svg'
+import menuIcon from './logoutLogo.png'
+import menuCloseIcon from './closeIcon.svg'
 
 const Navigation = ({onRouteChange, isMenuOpen, toggleMenu, menuRouteDirection}) =>{
     const menuName = (input) =>{
@@ -19,7 +20,7 @@ const Navigation = ({onRouteChange, isMenuOpen, toggleMenu, menuRouteDirection})
     if (isMenuOpen){
         return(
             <nav className="nav" style={{backdropFilter: "grayscale(100%)"}}>
-                <img src={menuIcon} alt="Menu"onClick={() => toggleMenu()} className="menu" />
+                <img src={menuCloseIcon} alt="Menu"onClick={() => toggleMenu()} className="menu" />
                 <div className="navMenu">
                     <p onClick={() => onRouteChange(menuRouteDirection)} className='menuItem f3 link dim black underline pa3 pointer'>{menuName(menuRouteDirection)}</p>
                 </div>

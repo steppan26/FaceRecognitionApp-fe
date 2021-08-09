@@ -42,6 +42,7 @@ class SignIn extends Component {
 
     onSubmitSignIn = (event) => {
         const {signInEmail, signInPassword} = this.state
+
         if(signInEmail && signInPassword){
             this.toggleBtnView(event.target, "deactivate")
             fetch('https://smart-brain-faceapp1.herokuapp.com/signin', {
@@ -61,15 +62,16 @@ class SignIn extends Component {
             })
             .then(this.toggleBtnView(event.target, "activate"))
             return
-        } else {
+        } else { //if both email and password input fields are empty, then show error message
             this.showErrorMessage(signInEmail, signInPassword)
         }
         return
     }
 
+    // ADDITION: function used for showing and hiding error messages relating to the email and password input fields
     showErrorMessage = (email, password) =>{
-        const emailError = document.getElementById("emailError")
-        const passwordError = document.getElementById("passwordError")
+        const emailError = document.getElementById("loginEmailError")
+        const passwordError = document.getElementById("loginPasswordError")
 
         if(!email){
             emailError.style.opacity = "100%"
@@ -80,7 +82,6 @@ class SignIn extends Component {
             passwordError.style.opacity = "100%"
         } else {
             passwordError.style.opacity = "0%"
-
         }
     }
 
@@ -89,8 +90,8 @@ class SignIn extends Component {
             <article className="signInWrapper br3 ba b--black-10 mt4 w-100 w-50-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
-                        <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="signInTitle">Sign In</legend>
+                        <fieldset id="sign_in" className="ba b--transparent ph0 mh0">
+                            <legend className="signInTitle mv3 w-100">Sign in</legend>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address"></label>
                                 <input
@@ -101,9 +102,9 @@ class SignIn extends Component {
                                     onChange={this.onEmailChange}
                                     placeholder="EMAIL"
                                 />
-                                <p className="loginErrorMsg" id="emailError">Please input a valid email address</p>
+                                <p className="loginErrorMsg" id="loginEmailError">Please input a valid email address</p>
                             </div>
-                            <div className="mv3">
+                            <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="password"></label>
                                 <input
                                     className="input-box pa2 input-reset ba hover-bg-black hover-white w-100"
@@ -113,10 +114,12 @@ class SignIn extends Component {
                                     onChange={this.onPasswordChange}
                                     placeholder="PASSWORD"
                                 />
-                                <p className="loginErrorMsg" id="passwordError">Please input a valid password</p>
+                                <p className="loginErrorMsg" id="loginPasswordError">Please input a valid password</p>
                             </div>
                         </fieldset>
                         <div className="">
+                        <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email or your password</p>
+
                             <input
                                 className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                                 type="submit"

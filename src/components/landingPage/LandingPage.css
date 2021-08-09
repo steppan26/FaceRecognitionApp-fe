@@ -9,6 +9,7 @@
 .landingSection{
     display: flex;
     flex-direction: column;
+    margin-top: 3.5rem;
 }
 
 .landingTitle{
@@ -65,7 +66,7 @@
 
 }
 
-@media only screen and (min-width: 450px){
+@media only screen and (min-width: 560px){
     .landingSection{
         flex-direction: row;
     }

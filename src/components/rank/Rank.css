@@ -2,6 +2,14 @@
     font-size: 2em;
 }
 
+.userName{
+    margin: 1rem 0;
+    font-size: 3.5rem;
+    padding: 4rem 0 0 0;
+    text-shadow: 5px 5px 8px var(--clr-primary-main);
+}
+
 .rankValue{
-    font-size: 4em;
+    font-size: 5rem;
+    text-shadow: 5px 5px 6px var(--clr-primary-main);
 }

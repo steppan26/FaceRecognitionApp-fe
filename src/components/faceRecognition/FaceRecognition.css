@@ -1,6 +1,7 @@
 .bounding-box {
     position: absolute;
-    box-shadow: 0 0 0 3px blue inset;
+    box-shadow: 0 0 0 3px var(--clr-primary-accent) inset;
+    border: 2px solid var(--clr-secondary-accent);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -9,10 +10,16 @@
 
 .faceRecognition-wrapper {
     position: absolute;
-    margin-top: 2em;
     box-shadow: 0.5em 0.5em 1em 0.2em rgba(70, 69, 69, 0.4) ;
+}
+
+#inputImage{
+    max-width: 250px;
+    max-height: 250px;
 }
 
 .imageWrapper{
     margin-top: 2rem;
+    margin-bottom: 1rem;
+    height: fit-content;
 }

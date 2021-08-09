@@ -3,6 +3,8 @@ import './LandingPage.css'
 import SignIn from '../../components/signIn/SignIn'
 import Register from '../../components/register/Register'
 import landingImage from './landingPage_image.jpg'
+import brain from '../logo/brain.png';
+
 
 
 const LandingPage = ({ route, loadUser, onRouteChange }) => {
@@ -34,7 +36,10 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
 
     return(
         <div className="landingPageWrapper">
-            <h1 className="landingTitle">Smart-Brain App</h1>
+            <div className="logoWraper">
+                <img src={brain} alt="logo" className="logo" />
+                <h1 className="landingTitle">Smart-Brain App</h1>
+            </div>
             <div className="landingSection">
                 <div className="landingImageWrapper">
                     <img src={landingImage} alt="graphic showing facial recognition example" />
@@ -48,9 +53,9 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
                     <div className="tabUnselected tab RegisterTab" id="registerTab" onClick={() => tabSelect("Register")} >Register</div>
                 </div>
                     <div className="userInputSection">
-                        { route === "SignIn"
-                            ? <SignIn loadUser={loadUser} onRouteChange={onRouteChange} />
-                            : <Register loadUser={loadUser} onRouteChange={onRouteChange} />
+                        { route === "Register"
+                            ? <Register loadUser={loadUser} onRouteChange={onRouteChange} />
+                            : <SignIn loadUser={loadUser} onRouteChange={onRouteChange} />
                         }
                     </div>
                 </section>

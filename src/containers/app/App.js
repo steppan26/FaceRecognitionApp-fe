@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../../components/navigation/Navigation'
 import FaceRecognition from '../../components/faceRecognition/FaceRecognition'
 import Logo from '../../components/logo/Logo'
-import SignIn from '../../components/signIn/SignIn'
 import Rank from '../../components/rank/Rank'
-import Register from '../../components/register/Register'
 import Particles from 'react-particles-js';
 import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
@@ -12,20 +10,10 @@ import LandingPage from '../../components/landingPage/LandingPage';
 
 
 const particlesOptions = {
-  particles: {
-    number: {
-      value: 20,
-      density: {
-        enable: true,
-        value_area: 200,
-      }
-    },
-    color: {
-      value: "red"
-    }
-  },
-  line_linked:{
-    enable_auto: true,
+  polygon: {
+    enable: true,
+    type: 'inside',
+    move: {radius: 10}
   }
 }
 const initialState = {
@@ -130,9 +118,7 @@ class App extends Component {
   onRouteChange = (route) =>{
     this.setState({isMenuOpen: false})
     if (route === 'SignOut'){
-      this.setState({route: "SignIn"})
       this.setState(initialState)
-      console.log(initialState)
     } else if (route === 'home'){
       this.setState({isSignedIn: true})
     }
@@ -147,8 +133,9 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box, isMenuOpen } = this.state // destructure states to avoid having to repeatedly type this.state.
     return (
       <div className="App">
+        <Particles className="particles" params={particlesOptions} />
         { route === 'home'
-          ? <div>
+          ? <div style={{padding: "0 2rem"}}>
               <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignOut"/>
               <Logo />
               <Rank name={this.state.user.name} entries={this.state.user.entries} />
@@ -157,12 +144,12 @@ class App extends Component {
                 onButtonSubmit={this.onButtonSubmit}
               />
               <FaceRecognition box={box} imageUrl={imageUrl} />
-              <Particles className="particles" params={particlesOptions} />
             </div>
           : <div>
               {/* <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection={route}/> */}
               <LandingPage onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
             </div>}
+            <footer style={{fontSize: "0.6rem", padding: "0 1rem 1rem 1rem", opacity: "60%"}}>This app was created by Stéphane Baroux based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
             </div>
     );
   }

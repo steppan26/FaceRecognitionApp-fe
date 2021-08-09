@@ -1,4 +1,6 @@
 .App {
+  min-width: fit-content;
+  min-height: 100vh;
   text-align: center;
 }
 
@@ -8,6 +10,7 @@
 }
 
 .particles{
+  opacity: 55%;
   position: fixed;
   top: 0;
   right: 0;
