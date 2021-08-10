@@ -36,7 +36,7 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
 
     return(
         <div className="landingPageWrapper">
-            <div className="logoWraper">
+            <div className="logoWrapper">
                 <img src={brain} alt="logo" className="logo" />
                 <h1 className="landingTitle">Smart-Brain App</h1>
             </div>
@@ -48,10 +48,10 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
                 <q className="quote">There are many benefits facial recognition can offer society, from preventing crimes and increasing safety and security to reducing unnecessary human interaction and labor. In some instances, it can even help support medical efforts. </q>
 
                 <section className="cta">
-                <div className="ctaTabs">
-                    <div className="tabSelected tab loginTab" id="loginTab" onClick={() => tabSelect("SignIn")} >Sign In</div>
-                    <div className="tabUnselected tab RegisterTab" id="registerTab" onClick={() => tabSelect("Register")} >Register</div>
-                </div>
+                    <div className="ctaTabs">
+                        <div className="tabSelected tab loginTab" id="loginTab" onClick={() => tabSelect("SignIn")} >Sign In</div>
+                        <div className="tabUnselected tab RegisterTab" id="registerTab" onClick={() => tabSelect("Register")} >Register</div>
+                    </div>
                     <div className="userInputSection">
                         { route === "Register"
                             ? <Register loadUser={loadUser} onRouteChange={onRouteChange} />

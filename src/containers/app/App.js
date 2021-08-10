@@ -8,7 +8,6 @@ import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
 import LandingPage from '../../components/landingPage/LandingPage';
 
-
 const particlesOptions = {
   polygon: {
     enable: true,
@@ -43,7 +42,7 @@ class App extends Component {
       isMenuOpen: false,
       user: {
         id: '',
-        name: "john",
+        name: "John",
         email: "",
         entries: 0,
         joined: ""
@@ -83,7 +82,6 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
-  
 
   onButtonSubmit = () =>{
     this.setState({imageUrl: this.state.input})
@@ -111,6 +109,7 @@ class App extends Component {
         .catch(console.log)
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
+      document.getElementById("bounding-box").style.display = "block"
     })
     .catch(err => console.log(err)) //catch any error and console log the error
   }
@@ -135,7 +134,7 @@ class App extends Component {
       <div className="App">
         <Particles className="particles" params={particlesOptions} />
         { route === 'home'
-          ? <div style={{padding: "0 2rem"}}>
+          ? <div style={{padding: "0 2rem", display: "flex", flexFlow: "column nowrap", justifyContent: "center"}}>
               <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignOut"/>
               <Logo />
               <Rank name={this.state.user.name} entries={this.state.user.entries} />
@@ -146,11 +145,10 @@ class App extends Component {
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div>
           : <div>
-              {/* <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection={route}/> */}
               <LandingPage onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
             </div>}
             <footer style={{fontSize: "0.6rem", padding: "0 1rem 1rem 1rem", opacity: "60%"}}>This app was created by Stéphane Baroux based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
-            </div>
+      </div>
     );
   }
 }

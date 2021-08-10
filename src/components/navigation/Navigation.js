@@ -16,7 +16,13 @@ const Navigation = ({onRouteChange, isMenuOpen, toggleMenu, menuRouteDirection})
                 return "Sign In"
         }
     }
-
+    if(window.innerWidth >= 860){
+        return(
+            <div className="nav desktopMenu">
+                <p onClick={() => onRouteChange(menuRouteDirection)} className='desktopMenu'>{menuName(menuRouteDirection)}</p>
+            </div>
+        )
+    } else {
     if (isMenuOpen){
         return(
             <nav className="nav" style={{backdropFilter: "grayscale(100%)"}}>
@@ -32,7 +38,7 @@ const Navigation = ({onRouteChange, isMenuOpen, toggleMenu, menuRouteDirection})
                 <img src={menuIcon} alt="Menu"onClick={() => toggleMenu()} className="menu" />
             </nav>
         )
-    }
+    }}
 }
 
 export default Navigation

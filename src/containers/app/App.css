@@ -1,7 +1,9 @@
 .App {
   min-width: fit-content;
   min-height: 100vh;
+  height: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .center{
@@ -17,4 +19,6 @@
   bottom: 0;
   left: 0;
   z-index: -1;
+  max-height: fit-content;
 }
+

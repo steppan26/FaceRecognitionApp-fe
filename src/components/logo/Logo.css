@@ -1,4 +1,4 @@
-.logoWraper{
+.logoWrapper{
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
@@ -20,4 +20,14 @@
     width: 5em;
     z-index: 1;
     padding: 1em;
+}
+
+@media only screen and (min-width: 860px){
+    .logo{
+        width: 8rem;
+        padding-left: 2rem;
+    }
+    .landingTitle{
+        font-size: 2.5rem;
+    }
 }

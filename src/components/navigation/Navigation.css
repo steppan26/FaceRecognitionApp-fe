@@ -7,6 +7,8 @@
     width: 100%;
     top: 0;
     left: 0;
+    max-width: 1440px;
+    padding: auto;
 }
 
 
@@ -26,7 +28,8 @@
     width: 100vw;
     background-color: rgb(235, 250, 252);
     position: fixed;
-    margin: none;
+    margin: 0;
+    padding: 0;
     top: 0;
     left: 0;
     right: 0;
@@ -66,4 +69,11 @@
 
 .pushRight {
     padding-left: auto;
+}
+
+.desktopMenu{
+    text-transform: uppercase;
+    margin: 2.5rem 0;
+    padding-right: 2rem;
+    font-weight: 700;
 }

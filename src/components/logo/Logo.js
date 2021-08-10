@@ -4,7 +4,7 @@ import './Logo.css'
 
 const Logo = () =>{
     return(
-            <div className="logoWraper">
+            <div className="logoWrapper">
                 <img src={brain} alt="logo" className="logo" />
                 <h1 className="landingTitle">Smart-Brain App</h1>
             </div>

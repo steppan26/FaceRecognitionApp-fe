@@ -336,9 +336,3 @@
         width: 25%;
     }
 }
-
-@media only screen and (min-width: 560px){
-    .signInWrapper{
-        border: 1px solid rgb(145, 181, 201);
-    }
-}
