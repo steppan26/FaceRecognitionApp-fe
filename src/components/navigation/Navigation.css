@@ -9,6 +9,7 @@
     left: 0;
     max-width: 1440px;
     padding: auto;
+    overflow: hidden;
 }
 
 
@@ -24,7 +25,7 @@
     align-items: center;
     font-size: 3em;
     font-weight: 200;
-    height: 100vh;
+    height: 110vh;
     width: 100vw;
     background-color: rgb(235, 250, 252);
     position: fixed;

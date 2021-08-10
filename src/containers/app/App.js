@@ -37,12 +37,12 @@ class App extends Component {
       input: "",
       imageUrl: "",
       box: {},
-      route: 'home',
+      route: 'SignIn',
       isSignedIn: false,
       isMenuOpen: false,
       user: {
         id: '',
-        name: "John",
+        name: "",
         email: "",
         entries: 0,
         joined: ""
