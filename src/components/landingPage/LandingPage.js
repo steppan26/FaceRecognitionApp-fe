@@ -43,7 +43,7 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
             <div className="landingSection">
                 <div className="landingImageWrapper">
                     <img src={landingImage} alt="graphic showing facial recognition example" />
-                    <a href="http://www.freepik.com" style={{opacity: "20%", textDecoration:"none", margin:"0", padding:"0"}}>Designed by vectorjuice / Freepik</a>
+                    <a href="http://www.freepik.com" style={{opacity: "20%", textDecoration:"none", margin:"0", padding:"0"}}>Image designed by vectorjuice / Freepik</a>
                 </div>
                 <q className="quote">There are many benefits facial recognition can offer society, from preventing crimes and increasing safety and security to reducing unnecessary human interaction and labor. In some instances, it can even help support medical efforts. </q>
 

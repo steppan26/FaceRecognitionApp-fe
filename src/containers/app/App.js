@@ -147,7 +147,7 @@ class App extends Component {
           : <div>
               <LandingPage onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
             </div>}
-            <footer style={{fontSize: "0.6rem", padding: "0 1rem 1rem 1rem", opacity: "60%"}}>This app was created by Stéphane Baroux based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
+            <footer style={{fontSize: "0.65rem", padding: "0 1rem 1rem 1rem", opacity: "70%", color:"white"}}> This app was created by <a href="https://github.com/steppan26/FaceRecognitionApp-fe/" target="_blank" rel="noopener noreferrer">STEPHANE BAROUX</a> based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
       </div>
     );
   }
