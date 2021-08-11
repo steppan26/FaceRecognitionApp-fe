@@ -1,7 +1,8 @@
 .nav{
     display: flex;
     justify-content: flex-end;
-    margin: 1.5rem 0 1.5rem 0;
+    margin: 0;
+    padding: 1.5rem 0;
     position: fixed;
     z-index: 2;
     width: 100%;
@@ -9,7 +10,6 @@
     left: 0;
     max-width: 1440px;
     padding: auto;
-    overflow: hidden;
 }
 
 
