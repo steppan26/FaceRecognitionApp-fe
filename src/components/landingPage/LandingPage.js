@@ -7,7 +7,7 @@ import brain from '../logo/brain.png';
 
 
 
-const LandingPage = ({ route, loadUser, onRouteChange }) => {
+const LandingPage = ({ route, loadUser, onRouteChange, serverAddress }) => {
 
     const tabSelect = (routeDirection) =>{
         const loginTab = document.getElementById("loginTab")
@@ -54,8 +54,8 @@ const LandingPage = ({ route, loadUser, onRouteChange }) => {
                     </div>
                     <div className="userInputSection">
                         { route === "Register"
-                            ? <Register loadUser={loadUser} onRouteChange={onRouteChange} />
-                            : <SignIn loadUser={loadUser} onRouteChange={onRouteChange} />
+                            ? <Register serverAddress={serverAddress} loadUser={loadUser} onRouteChange={onRouteChange} />
+                            : <SignIn serverAddress={serverAddress} loadUser={loadUser} onRouteChange={onRouteChange} />
                         }
                     </div>
                 </section>

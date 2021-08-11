@@ -45,7 +45,7 @@ class SignIn extends Component {
 
         if(signInEmail && signInPassword){
             this.toggleBtnView(event.target, "deactivate")
-            fetch('https://smart-brain-faceapp1.herokuapp.com/signin', {
+            fetch(`${this.props.serverAddress}/signin`, {
                 method: 'post',
                 headers: {'content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -68,30 +68,12 @@ class SignIn extends Component {
         return
     }
 
-    // ADDITION: function used for showing and hiding error messages relating to the email and password input fields
-    showErrorMessage = (email, password) =>{
-        const emailError = document.getElementById("loginEmailError")
-        const passwordError = document.getElementById("loginPasswordError")
-
-        if(!email){
-            emailError.style.opacity = "100%"
-        } else {
-            emailError.style.opacity = "0%"
-        }
-        if(!password){
-            passwordError.style.opacity = "100%"
-        } else {
-            passwordError.style.opacity = "0%"
-        }
-    }
-
     render(){
         return(
             <article className="signInWrapper br3 ba b--black-10 mt4 w-100 w-50-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
-                        <fieldset id="sign_in" className="ba b--transparent ph0 mh0">
-                            <legend className="signInTitle mv3 w-100">Sign in</legend>
+                        <form id="sign_in" className="ba b--transparent ph0 mh0">
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address"></label>
                                 <input
@@ -102,7 +84,6 @@ class SignIn extends Component {
                                     onChange={this.onEmailChange}
                                     placeholder="EMAIL"
                                 />
-                                <p className="loginErrorMsg" id="loginEmailError">Please input a valid email address</p>
                             </div>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="password"></label>
@@ -114,21 +95,19 @@ class SignIn extends Component {
                                     onChange={this.onPasswordChange}
                                     placeholder="PASSWORD"
                                 />
-                                <p className="loginErrorMsg" id="loginPasswordError">Please input a valid password</p>
                             </div>
-                        </fieldset>
-                        <div className="">
-                        <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email or your password</p>
-
-                            <input
-                                className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                type="submit"
-                                value="Sign in"
-                                placeholder="Sign in"
-                                id="signinSubmit"
-                                onClick={this.onSubmitSignIn}
-                                />
-                        </div>
+                            <div className="">
+                                <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email or your password</p>
+                                <input
+                                    className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                    type="submit"
+                                    value="Sign in"
+                                    placeholder="Sign in"
+                                    id="signinSubmit"
+                                    onClick={this.onSubmitSignIn}
+                                    />
+                            </div>
+                        </form>
                     </div>
                 </main>
             </article>

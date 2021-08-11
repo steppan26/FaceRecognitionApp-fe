@@ -103,6 +103,10 @@
     padding: .5rem;
 }
 
+.pa3{
+    padding: 1.5;
+}
+
 .pa4 {
     padding: 2rem;
 }
@@ -290,6 +294,7 @@
     font-weight: 700;
     text-transform: capitalize;
     text-align: left;
+    padding-left: 2em;
 }
 
 .input-box{
@@ -303,9 +308,9 @@
 }
 
 .loginErrorMsg{
-    opacity: 0%;
+    display: none;
     color: red;
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin: 0;
     padding: 0;
 }

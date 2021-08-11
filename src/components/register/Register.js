@@ -45,65 +45,74 @@ class Register extends Component {
 
     }
 
+    // email validation function to ensure that the user inputs a valid email address
+    ValidateEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
     // ADDITION: function used for showing and hiding error messages relating to the email and password input fields
-    showErrorMessage = (email, password, name) =>{
+    showErrorMessage = (email=true, password=true, name=true) =>{
+        console.log(name, email, password)
         const nameError = document.getElementById("registerNameError")
         const emailError = document.getElementById("registerEmailError")
         const passwordError = document.getElementById("registerPasswordError")
 
         if(!email){
-            emailError.style.opacity = "100%"
+            emailError.style.display = "block"
         } else {
-            emailError.style.opacity = "0%"
+            emailError.style.display = "none"
         }
         if(!password){
-            passwordError.style.opacity = "100%"
+            passwordError.style.display = "block"
         } else {
-            passwordError.style.opacity = "0%"
+            passwordError.style.display = "none"
         }
         if(!name){
-            nameError.style.opacity = "100%"
+            nameError.style.display = "block"
         } else {
-            nameError.style.opacity = "0%"
+            nameError.style.display = "none"
         }
     }
 
     onSubmitSignIn = (event) => {
         const {email, password, name} = this.state
-
-        if(email && password && name){
-            this.toggleBtnView(event.target, "deactivate")
-            fetch('https://smart-brain-faceapp1.herokuapp.com/register', {
-                method: 'post',
-                headers: {'content-Type': 'application/json'},
-                body: JSON.stringify({
-                    email : this.state.email,
-                    password : this.state.password,
-                    name: this.state.name
-                })
-            })
-            .then(response => response.json())
-            .then(user => {
-                if (user.id) {
-                    this.props.loadUser(user)
-                    this.props.onRouteChange('home')
+            if (this.ValidateEmail(email)){
+                if(email && password && name){
+                    this.toggleBtnView(event.target, "deactivate")
+                    fetch(`${this.props.serverAddress}/register`, {
+                        method: 'post',
+                        headers: {'content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            email : this.state.email,
+                            password : this.state.password,
+                            name: this.state.name
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(user => {
+                        if (user.id) {
+                            this.props.loadUser(user)
+                            this.props.onRouteChange('home')
+                        }
+                    })
+                    .then(this.toggleBtnView(event.target, "activate"))
+                    return
+                } else { //if both email and password input fields are empty, then show error message
+                this.showErrorMessage(email, password, name)
                 }
-            })
-            .then(this.toggleBtnView(event.target, "activate"))
-            return
-        } else { //if both email and password input fields are empty, then show error message
-            this.showErrorMessage(email, password, name)
-        }
+            } else {
+                this.showErrorMessage(false, !!password, !!name) // '!!' returns 'true' if value of 'password/name' are not empty, otherwise returns 'false'
+            }
         return
     }
 
     render() {
         return(
-            <article className="signInWrapper br3 ba b--black-10 mt4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+            <article className="signInWrapper br3 ba b--black-10 mt4 w-100-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
-                        <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="signInTitle mv3">Register</legend>
+                        <form id="sign_up" className="ba b--transparent ph0 mh0">
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="name"></label>
                                 <input
@@ -136,21 +145,21 @@ class Register extends Component {
                                     name="password"
                                     id="password"
                                     onChange={this.onPasswordChange}
-                                    placeholder="PASSWORD"
+                                    placeholder="PASSWORD [min 6 characters]"
                                 />
-                                <p className="loginErrorMsg" id="registerPasswordError">Please input a password</p>
+                                <p className="loginErrorMsg" id="registerPasswordError">Password must contain at least 6 characters</p>
                             </div>
                             <p className="loginErrorMsg" id="generalRegisterError">There was an error, you have not been registered</p>
-                        </fieldset>
-                        <div className="">
-                            <input
-                                className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                type="submit"
-                                value="Register"
-                                placeholder="Register"
-                                onClick={this.onSubmitSignIn}
-                            />
-                        </div>
+                            <div className="">
+                                <input
+                                    className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                    type="submit"
+                                    value="Register"
+                                    placeholder="Register"
+                                    onClick={this.onSubmitSignIn}
+                                />
+                            </div>
+                        </form>
                     </div>
                 </main>
             </article>
