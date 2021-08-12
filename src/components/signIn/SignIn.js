@@ -1,3 +1,4 @@
+import e from 'cors';
 import React, { Component } from 'react';
 import './SignIn.css'
 
@@ -21,8 +22,9 @@ class SignIn extends Component {
     toggleBtnView = (btn, state) => {
         switch (state) {
             default:
+                btn.style.backgroundColor = ""
                 btn.setAttribute("value", "Sign in")
-                btn.setAttribute("disabled", "false")
+                btn.removeAttribute("disabled")
                 break
             case "deactivate":
                 btn.style.backgroundColor = "grey"
@@ -30,10 +32,9 @@ class SignIn extends Component {
                 btn.setAttribute("disabled", "true")
                 break
             case "activate":
-                btn.style.backgroundColor = "none"
+                btn.style.backgroundColor = ""
                 btn.setAttribute("value", "Sign in")
-                btn.setAttribute("disabled", "false")
-
+                btn.removeAttribute("disabled")
                 break
         }
         return
@@ -42,8 +43,8 @@ class SignIn extends Component {
 
     onSubmitSignIn = (event) => {
         const {signInEmail, signInPassword} = this.state
-
-        if(signInEmail && signInPassword){
+        event.preventDefault() // this prevents the 'submit' button from attempting its own POST causing browser to refresh
+        if(signInEmail && signInPassword) {
             this.toggleBtnView(event.target, "deactivate")
             fetch(`${this.props.serverAddress}/signin`, {
                 method: 'post',
@@ -55,17 +56,27 @@ class SignIn extends Component {
             })
             .then(response => response.json())
             .then(user => {
-                if (user.id) {
+                if (user === "wrong_credentials"){
+                    const errorMsg = document.getElementById("generalLoginError")
+                    errorMsg.style.display = "block"
+                    errorMsg.innerHTML = "There was a problem with either your email, your password or both"
+                    this.toggleBtnView(event.target, "activate")
+                } else if (user === "unable_to_get_user"){
+                    const errorMsg = document.getElementById("generalLoginError")
+                    errorMsg.style.display = "block"
+                    errorMsg.innerHTML = "There was a problem fetching your account, we are currently unable to log you in"
+                    this.toggleBtnView(event.target, "activate")
+                } else if (user.id) {
                     this.props.loadUser(user)
                     this.props.onRouteChange('home')
                 }
             })
-            .then(this.toggleBtnView(event.target, "activate"))
-            return
+            .catch(err => console.log(err))
+            this.toggleBtnView(event.target, "activate")
+            return false
         } else { //if both email and password input fields are empty, then show error message
-            this.showErrorMessage(signInEmail, signInPassword)
-        }
-        return
+            document.getElementById("generalLoginError").style.display = "block"        }
+        return false
     }
 
     render(){
@@ -97,7 +108,7 @@ class SignIn extends Component {
                                 />
                             </div>
                             <div className="">
-                                <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email or your password</p>
+                                <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email, your password or both</p>
                                 <input
                                     className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                                     type="submit"

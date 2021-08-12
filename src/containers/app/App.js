@@ -8,7 +8,9 @@ import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
 import LandingPage from '../../components/landingPage/LandingPage';
 
+ // eslint-disable-next-line
 const herokuServerAddress = 'https://smart-brain-faceapp1.herokuapp.com'
+ // eslint-disable-next-line
 const localServerAddress = 'http://localhost:3000'
 
 
@@ -149,7 +151,7 @@ class App extends Component {
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div>
           : <div>
-              <LandingPage serverAddress={localServerAddress} onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
+              <LandingPage serverAddress={herokuServerAddress} onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
             </div>}
             <footer style={{fontSize: "0.65rem", padding: "0 1rem 1rem 1rem", opacity: "70%", color:"white"}}> This app was created by <a href="https://github.com/steppan26/FaceRecognitionApp-fe/" target="_blank" rel="noopener noreferrer">STEPHANE BAROUX</a> based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
       </div>

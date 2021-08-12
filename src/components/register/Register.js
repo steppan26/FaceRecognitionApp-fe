@@ -47,6 +47,7 @@ class Register extends Component {
 
     // email validation function to ensure that the user inputs a valid email address
     ValidateEmail = (email) => {
+         // eslint-disable-next-line
         const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
@@ -77,34 +78,38 @@ class Register extends Component {
 
     onSubmitSignIn = (event) => {
         const {email, password, name} = this.state
-            if (this.ValidateEmail(email)){
-                if(email && password && name){
-                    this.toggleBtnView(event.target, "deactivate")
-                    fetch(`${this.props.serverAddress}/register`, {
-                        method: 'post',
-                        headers: {'content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            email : this.state.email,
-                            password : this.state.password,
-                            name: this.state.name
-                        })
+        event.preventDefault() // this prevents the 'submit' button from attempting its own POST causing browser to refresh
+        if (this.ValidateEmail(email)){
+            if(email && password && name){
+                this.toggleBtnView(event.target, "deactivate")
+                fetch(`${this.props.serverAddress}/register`, {
+                    method: 'post',
+                    headers: {'content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        email : this.state.email,
+                        password : this.state.password,
+                        name: this.state.name
                     })
-                    .then(response => response.json())
-                    .then(user => {
-                        if (user.id) {
-                            this.props.loadUser(user)
-                            this.props.onRouteChange('home')
-                        }
-                    })
-                    .then(this.toggleBtnView(event.target, "activate"))
-                    return
-                } else { //if both email and password input fields are empty, then show error message
-                this.showErrorMessage(email, password, name)
-                }
-            } else {
-                this.showErrorMessage(false, !!password, !!name) // '!!' returns 'true' if value of 'password/name' are not empty, otherwise returns 'false'
+                })
+                .then(response => response.json())
+                .then(user => {
+                    if(user === 'unable'){
+                        document.getElementById("generalRegisterError").style.display = "block"
+
+                    } else if (user.id) {
+                        this.props.loadUser(user)
+                        this.props.onRouteChange('home')
+                    }
+                })
+                .then(this.toggleBtnView(event.target, "activate"))
+                return
+            } else { //if both email and password input fields are empty, then show error message
+            this.showErrorMessage(email, password, name)
             }
-        return
+        } else {
+            this.showErrorMessage(false, !!password, !!name) // '!!' returns 'true' if value of variable is not empty, otherwise returns 'false'
+        }
+    return
     }
 
     render() {
