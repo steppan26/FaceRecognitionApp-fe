@@ -34,9 +34,9 @@ By the end of the course I felt that I had learnt so much, not only from what ha
 ### Screenshot
 
 ![The landing page for Desktop version](/screenshots/Screenshot_LandingPage_Desktop.png)
-![](./screenshots/Screenshot_HomePage_Desktop.jpg)
-![](./screenshots/Screenshot_LandingPage_Mobile.jpg)
-![](./screenshots/Screenshot_HomePage_Mobile.jpg)
+![](/screenshots/Screenshot_HomePage_Desktop.jpg)
+![](/screenshots/Screenshot_LandingPage_Mobile.jpg)
+![](/screenshots/Screenshot_HomePage_Mobile.jpg)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
