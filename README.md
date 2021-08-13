@@ -31,25 +31,20 @@ Initially the challenge was to get through the whole course, developping and ult
 Whilst working on this project I would regularly take time away to work on other little projects, usually projects on frontendmentors.com, so that I could practice what I had been taught in a seperate and different environment to the one which had been set up throughout this tutorial.
 By the end of the course I felt that I had learnt so much, not only from what had been taught during the course but also through my own challenges, problems and researching that I did. I had always had the intention to modify the project on the front end to make it more unique to myself, but by the time I got to the end of the project I felt I had enough confidence to implement what I felt were necessary changes [such as displaying error messages to the user on the page whenever there is a problem, something which the course did not implement]
 
-### Screenshot
+### Screenshots
 
-![The landing page for Desktop version](/screenshots/Screenshot_LandingPage_Desktop.png)
-![](./screenshots/Screenshot_HomePage_Desktop.jpg)
-![](./screenshots/Screenshot_LandingPage_Mobile.jpg)
-![](./screenshots/Screenshot_HomePage_Mobile.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![The landing page for Desktop version](/Screenshot_LandingPage_Desktop.png)
+![The home page for Desktop version](/screenshots/Screenshot_HomePage_Desktop.jpg)
+![The landing page for mobile version](/screenshots/Screenshot_LandingPage_Mobile.jpg)
+![The landing page for mobile version](/screenshots/Screenshot_HomePage_Mobile.jpg)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://smart-brain-faceapp1-front-end.herokuapp.com/](https://smart-brain-faceapp1-front-end.herokuapp.com/)
+- Front-end github repository: [https://github.com/steppan26/FaceRecognitionApp-fe](https://github.com/steppan26/FaceRecognitionApp-fe)
+- back-end/API github repository: [https://github.com/steppan26/FaceRecognitionApp-api](https://github.com/steppan26/FaceRecognitionApp-api)
 
 ## My process
 
@@ -58,61 +53,97 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
+- Javascript
+- Node.js
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- React - JS library
+- Heroku - Cloud application platform
+- Postman - For setting up and testing/debugging back-end server requests
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I came into this project knowing a small amount of front-end as I worked through the udemy course. This project was designed by the course to teach us about the back-end of web development. The front-end was built with a very simple design, the landing page was literally just a 'sign in' section, with an option to register, which would then take you to the main home page where you can submit a url of an image for the API to attempt face-detection.
 
-To see how you can add code snippets, see below:
+I used this project as an opportunity to create my first full-stack app, with a solid front-end structure and design, coupled with the back-end code which was worked through.
+As the course was rather long (roughly 37hours of video), we were shown the fundamentals to build a solid backend with a secure password hash generator, however I then took it of my own initiative to further develop this by ensuring that any error response received from the server is displayed in a meaningful way to the user, whilst keeping within the design of the site.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+I also opted to add a little more flair on the landing page, and making the 'sign in' and 'register' sections tab-able with refreshing the whole page. I feel very proud that I was able to implement virtually all changes/additions that I wanted to.
+
+The following function changes the appearance of the 'Sign In' and 'Register' tabs on the landing page, which allows the user to see which section has been clicked/selected
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+const tabSelect = (routeDirection) =>{
+        const loginTab = document.getElementById("loginTab")
+        const registerTab = document.getElementById("registerTab")
+
+        switch (routeDirection){
+            default:
+                break
+            case "SignIn":
+                loginTab.classList.remove("tabUnselected")
+                loginTab.classList.add("tabSelected")
+                registerTab.classList.remove("tabSelected")
+                registerTab.classList.add("tabUnselected")
+                onRouteChange(routeDirection)
+                break
+            case "Register":
+                registerTab.classList.add("tabSelected")
+                registerTab.classList.remove("tabUnselected")
+                loginTab.classList.remove("tabSelected")
+                loginTab.classList.add("tabUnselected")
+                onRouteChange(routeDirection)
+                break
+        }
+    }
 }
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The following function gets run whenever an error message is received from the server whilst registering. This function allows the displaying of error messages for the 'name', 'email' and 'password' input fields individually depending on whether each has met the required conditions to be passed to the databases.
+```js
+showErrorMessage = (email=true, password=true, name=true) =>{
+        console.log(name, email, password)
+        const nameError = document.getElementById("registerNameError")
+        const emailError = document.getElementById("registerEmailError")
+        const passwordError = document.getElementById("registerPasswordError")
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+        if(!email){
+            emailError.style.display = "block"
+        } else {
+            emailError.style.display = "none"
+        }
+        if(!password){
+            passwordError.style.display = "block"
+        } else {
+            passwordError.style.display = "none"
+        }
+        if(!name){
+            nameError.style.display = "block"
+        } else {
+            nameError.style.display = "none"
+        }
+    }
+```
+
+I am also extremely proud of having managed to get through the various sticking points throughout the course. The tutor was mostly working on Mac, and on occasion he would be using software or methods which are unique to Mac and as such had to research the various ways to do the same thing on Windows. This was frustrating at first but ultimately provided me with the opportunity to learn how to find out information for myself which others may not be able to provide to me.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I fully intend to continue my development as a web developper. For my next project i intend to use a lot of the same methods and techniques learnt during this course, but on my own project without a guiding hand all the way through.
+I hope to someday come back to this project once I have learnt more techniques, and I feel more comfortable working with servers and databases, to add more features.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Stack Overflow](https://www.stackoverflow.com) - This website is a fantastic place to find answers to questions which may have already been asked by somebody else. The community is extremely useful and you can often find multiple responses to a problem, which is a great way or learning about new techniques, methods and functions.
+- [W3 Schools](https://www.w3schools.com/) - Still being rather new to web development there are still a lot of features and techniques which I am either not familiar, or comfortable, with. This site is always there to help me better understand a method/function and what methods/functions I have access to.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Github - [Stéphane Baroux](https://github.com/steppan26)
+- Frontend Mentor - [@steppan26](https://www.frontendmentor.io/profile/steppan26)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I would like to thank **Andrei Naegoie** for his fantastic enthusiasm and detailed information. I particularly liked the way the course has been updated throughout the years and how he still keeps old content, which may not be seen as relevant after an update or new software has been released, but instead teaches you the old ways of doing things so that you have a better understanding of why certain tools exist.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I would also like to thank **Wolfgang**, the teacher's assistant over on Udemy, who is always very quick to respond to any question and/or comment to help us keep up with the course. This is so valuable to help students not get discouraged when it becomes difficult to follow the video.
