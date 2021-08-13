@@ -21,7 +21,6 @@ const LandingPage = ({ route, loadUser, onRouteChange, serverAddress }) => {
                 loginTab.classList.add("tabSelected")
                 registerTab.classList.remove("tabSelected")
                 registerTab.classList.add("tabUnselected")
-
                 onRouteChange(routeDirection)
                 break
             case "Register":
