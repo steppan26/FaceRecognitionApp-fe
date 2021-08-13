@@ -25,7 +25,7 @@ This course is what got me started in the world of web development and it guided
 
 ### The challenge
 
-Initially the challenge was to get through the whole course, developping and ultimately deploying a full functioning web app with a working front-end and back-end. The intention of this course, for me, was to gain an understanding of the steps, processes, tools and skills required to create a fully functioning web app.
+Initially the challenge was to get through the whole course, developing and ultimately deploying a full functioning web app with a working front-end and back-end. The intention of this course, for me, was to gain an understanding of the steps, processes, tools and skills required to create a fully functioning web app.
 
 Whilst working on this project I would regularly take time away to work on other little projects, usually projects on frontendmentors.com, so that I could practice what I had been taught in a seperate and different environment to the one which had been set up throughout this tutorial.
 By the end of the course I felt that I had learnt so much, not only from what had been taught during the course but also through my own challenges, problems and researching that I did. I had always had the intention to modify the project on the front end to make it more unique to myself, but by the time I got to the end of the project I felt I had enough confidence to implement what I felt were necessary changes [such as displaying error messages to the user on the page whenever there is a problem, something which the course did not implement]
