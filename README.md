@@ -10,7 +10,7 @@ This course is what got me started in the world of web development and it guided
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshots](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -20,7 +20,6 @@ This course is what got me started in the world of web development and it guided
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -34,17 +33,19 @@ By the end of the course I felt that I had learnt so much, not only from what ha
 ### Screenshots
 
 
-![The landing page for Desktop version](/Screenshot_LandingPage_Desktop.png)
-![The home page for Desktop version](/screenshots/Screenshot_HomePage_Desktop.jpg)
-![The landing page for mobile version](/screenshots/Screenshot_LandingPage_Mobile.jpg)
-![The landing page for mobile version](/screenshots/Screenshot_HomePage_Mobile.jpg)
+<img alt="landing page for desktop version" src="/screenshots/Screenshot_HomePage_Desktop.png" width="600" /> ![The landing page for Desktop version](/Screenshot_LandingPage_Desktop.png)
+![The home page for Desktop version](/Screenshot_HomePage_Desktop.jpg)
+
+
+![The landing page for mobile version](/Screenshot_LandingPage_Mobile.jpg)
+![The landing page for mobile version](/Screenshot_HomePage_Mobile.jpg)
 
 
 ### Links
 
 - Live Site URL: [https://smart-brain-faceapp1-front-end.herokuapp.com/](https://smart-brain-faceapp1-front-end.herokuapp.com/)
 - Front-end github repository: [https://github.com/steppan26/FaceRecognitionApp-fe](https://github.com/steppan26/FaceRecognitionApp-fe)
-- back-end/API github repository: [https://github.com/steppan26/FaceRecognitionApp-api](https://github.com/steppan26/FaceRecognitionApp-api)
+- Back-end/API github repository: [https://github.com/steppan26/FaceRecognitionApp-api](https://github.com/steppan26/FaceRecognitionApp-api)
 
 ## My process
 
