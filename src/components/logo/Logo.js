@@ -1,17 +1,13 @@
 import React from 'react';
 import brain from './brain.png';
-import Tilt from 'react-tilt'
 import './Logo.css'
 
 const Logo = () =>{
     return(
-        <div>
-            <Tilt className="Tilt" options={{ max : 55 }} style={{ height: 50, width: 50 }} >
-                <div className="Tilt-inner">
-                    <img src={brain} alt="logo" />
-                </div>
-            </Tilt>
-        </div>
+            <div className="logoWrapper">
+                <img src={brain} alt="logo" className="logo" />
+                <h1 className="landingTitle">Smart-Brain App</h1>
+            </div>
     );
 }
 export default Logo;

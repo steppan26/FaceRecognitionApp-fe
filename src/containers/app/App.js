@@ -2,30 +2,23 @@ import React, { Component } from 'react';
 import Navigation from '../../components/navigation/Navigation'
 import FaceRecognition from '../../components/faceRecognition/FaceRecognition'
 import Logo from '../../components/logo/Logo'
-import SignIn from '../../components/signIn/SignIn'
 import Rank from '../../components/rank/Rank'
-import Register from '../../components/register/Register'
-
 import Particles from 'react-particles-js';
 import ImageLinkForm from '../../components/imageLinkForm/ImageLinkForm'
 import './App.css';
+import LandingPage from '../../components/landingPage/LandingPage';
+
+ // eslint-disable-next-line
+const herokuServerAddress = 'https://smart-brain-faceapp1.herokuapp.com'
+ // eslint-disable-next-line
+const localServerAddress = 'http://localhost:3000'
 
 
 const particlesOptions = {
-  particles: {
-    number: {
-      value: 10,
-      density: {
-        enable: true,
-        value_area: 600,
-      }
-    },
-    color: {
-      value: "red"
-    }
-  },
-  line_linked:{
-    enable_auto: true,
+  polygon: {
+    enable: true,
+    type: 'inside',
+    move: {radius: 10}
   }
 }
 const initialState = {
@@ -34,6 +27,7 @@ const initialState = {
   box: {},
   route: 'SignIn',
   isSignedIn: false,
+  isMenuOpen: false,
   user: {
     id: '',
     name: "",
@@ -51,6 +45,7 @@ class App extends Component {
       box: {},
       route: 'SignIn',
       isSignedIn: false,
+      isMenuOpen: false,
       user: {
         id: '',
         name: "",
@@ -93,9 +88,10 @@ class App extends Component {
     this.setState({input: event.target.value})
   }
 
+
   onButtonSubmit = () =>{
     this.setState({imageUrl: this.state.input})
-    fetch('https://smart-brain-faceapp1.herokuapp.com/imageurl', { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
+    fetch(`${localServerAddress}/imageurl`, { //fetch for api call to clarifai on server.js [done on the back end to hide the api key]
       method: 'post',
       headers: {'content-Type': 'application/json'},
       body: JSON.stringify({
@@ -105,7 +101,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => { // get the response which gets passed into the calculateFaceLocation function which in turn returns an object which gets passed into the displayFaceBox function to apply the result to the box state
       if (response) {
-        fetch('https://smart-brain-faceapp1.herokuapp.com/image', {
+        fetch(`${localServerAddress}/image`, {
           method: 'put',
           headers: {'content-Type': 'application/json'},
           body: JSON.stringify({
@@ -119,11 +115,13 @@ class App extends Component {
         .catch(console.log)
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
+      document.getElementById("bounding-box").style.display = "block"
     })
     .catch(err => console.log(err)) //catch any error and console log the error
   }
 
   onRouteChange = (route) =>{
+    this.setState({isMenuOpen: false})
     if (route === 'SignOut'){
       this.setState(initialState)
     } else if (route === 'home'){
@@ -132,28 +130,30 @@ class App extends Component {
     this.setState({route: route})
   }
 
+  toggleMenu = () =>{
+    this.setState({isMenuOpen: !this.state.isMenuOpen})
+  }
+
   render(){
-    const { isSignedIn, imageUrl, route, box } = this.state // destructure states to avoid having to repeatedly type this.state.
+    const { isSignedIn, imageUrl, route, box, isMenuOpen } = this.state // destructure states to avoid having to repeatedly type this.state.
     return (
       <div className="App">
-        <Particles className="particles"
-          params={particlesOptions} />
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
+        <Particles className="particles" params={particlesOptions} />
         { route === 'home'
-          ? <div>
-            <Logo />
-            <Rank name={this.state.user.name} entries={this.state.user.entries} />
-            <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}
-            />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
-          </div>
-          : ( route === 'SignIn'
-          ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-          )
-        }
+          ? <div style={{padding: "0 2rem", display: "flex", flexFlow: "column nowrap", justifyContent: "center"}}>
+              <Navigation toggleMenu={this.toggleMenu} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} isMenuOpen={isMenuOpen} menuRouteDirection="SignOut"/>
+              <Logo />
+              <Rank name={this.state.user.name} entries={this.state.user.entries} />
+              <ImageLinkForm
+                onInputChange={this.onInputChange}
+                onButtonSubmit={this.onButtonSubmit}
+              />
+              <FaceRecognition box={box} imageUrl={imageUrl} />
+            </div>
+          : <div>
+              <LandingPage serverAddress={herokuServerAddress} onRouteChange={this.onRouteChange} loadUser={this.loadUser} route={route} />
+            </div>}
+            <footer style={{fontSize: "0.65rem", padding: "0 1rem 1rem 1rem", opacity: "70%", color:"white"}}> This app was created by <a href="https://github.com/steppan26/FaceRecognitionApp-fe/" target="_blank" rel="noopener noreferrer">STEPHANE BAROUX</a> based on the course from Zero to Mastery by Andrei Naegoie; but was then personalised and further edited</footer>
       </div>
     );
   }

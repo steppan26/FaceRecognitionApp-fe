@@ -1,3 +1,4 @@
+import e from 'cors';
 import React, { Component } from 'react';
 import './SignIn.css'
 
@@ -6,7 +7,7 @@ class SignIn extends Component {
         super(props)
         this.state = {
             signInEmail: "",
-            signInPassword: ""
+            signInPassword: "",
         }
     }
 
@@ -18,64 +19,106 @@ class SignIn extends Component {
         this.setState({signInPassword: event.target.value})
     }
 
-    onSubmitSignIn = () => {
-        fetch('https://smart-brain-faceapp1.herokuapp.com/signin', {
-            method: 'post',
-            headers: {'content-Type': 'application/json'},
-            body: JSON.stringify({
-                email : this.state.signInEmail,
-                password : this.state.signInPassword
-            })
-        })
-        .then(response => response.json())
-        .then(user => {
-            if (user.id) {
-                this.props.loadUser(user)
-                this.props.onRouteChange('home')
-            }
-        })
+    toggleBtnView = (btn, state) => {
+        switch (state) {
+            default:
+                btn.style.backgroundColor = ""
+                btn.setAttribute("value", "Sign in")
+                btn.removeAttribute("disabled")
+                break
+            case "deactivate":
+                btn.style.backgroundColor = "grey"
+                btn.setAttribute("value", "Signing in...")
+                btn.setAttribute("disabled", "true")
+                break
+            case "activate":
+                btn.style.backgroundColor = ""
+                btn.setAttribute("value", "Sign in")
+                btn.removeAttribute("disabled")
+                break
+        }
+        return
+
     }
 
-    render() {
-        const { onRouteChange } = this.props
+    onSubmitSignIn = (event) => {
+        const {signInEmail, signInPassword} = this.state
+        event.preventDefault() // this prevents the 'submit' button from attempting its own POST causing browser to refresh
+        if(signInEmail && signInPassword) {
+            this.toggleBtnView(event.target, "deactivate")
+            fetch(`${this.props.serverAddress}/signin`, {
+                method: 'post',
+                headers: {'content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email : signInEmail,
+                    password : signInPassword
+                })
+            })
+            .then(response => response.json())
+            .then(user => {
+                if (user === "wrong_credentials"){
+                    const errorMsg = document.getElementById("generalLoginError")
+                    errorMsg.style.display = "block"
+                    errorMsg.innerHTML = "There was a problem with either your email, your password or both"
+                    this.toggleBtnView(event.target, "activate")
+                } else if (user === "unable_to_get_user"){
+                    const errorMsg = document.getElementById("generalLoginError")
+                    errorMsg.style.display = "block"
+                    errorMsg.innerHTML = "There was a problem fetching your account, we are currently unable to log you in"
+                    this.toggleBtnView(event.target, "activate")
+                } else if (user.id) {
+                    this.props.loadUser(user)
+                    this.props.onRouteChange('home')
+                }
+            })
+            .catch(err => console.log(err))
+            this.toggleBtnView(event.target, "activate")
+            return false
+        } else { //if both email and password input fields are empty, then show error message
+            document.getElementById("generalLoginError").style.display = "block"        }
+        return false
+    }
+
+    render(){
         return(
-            <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+            <article className="signInWrapper br3 ba b--black-10 mt4 w-100 w-50-m w-25-l mw6 shadow-5 center">
                 <main className="pa4 black-80">
                     <div className="measure">
-                        <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                            <legend className="f1 fw6 ph0 mh0">Sign In</legend>
+                        <form id="sign_in" className="ba b--transparent ph0 mh0">
                             <div className="mt3">
-                                <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                                <label className="db fw6 lh-copy f6" htmlFor="email-address"></label>
                                 <input
-                                    className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                    className="input-box pa2 input-reset ba hover-bg-black hover-white w-100"
                                     type="email"
                                     name="email-address"
                                     id="email-address"
                                     onChange={this.onEmailChange}
+                                    placeholder="EMAIL"
                                 />
                             </div>
-                            <div className="mv3">
-                                <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                            <div className="mt3">
+                                <label className="db fw6 lh-copy f6" htmlFor="password"></label>
                                 <input
-                                    className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                                    className="input-box pa2 input-reset ba hover-bg-black hover-white w-100"
                                     type="password"
                                     name="password"
                                     id="password"
                                     onChange={this.onPasswordChange}
+                                    placeholder="PASSWORD"
                                 />
                             </div>
-                        </fieldset>
-                        <div className="">
-                            <input
-                                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                type="submit"
-                                value="Sign in"
-                                onClick={this.onSubmitSignIn}
-                            />
-                        </div>
-                        <div className="lh-copy mt3">
-                            <p onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
-                        </div>
+                            <div className="">
+                                <p className="loginErrorMsg" id="generalLoginError">There was a problem with either your email, your password or both</p>
+                                <input
+                                    className="btnRegister b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                                    type="submit"
+                                    value="Sign in"
+                                    placeholder="Sign in"
+                                    id="signinSubmit"
+                                    onClick={this.onSubmitSignIn}
+                                    />
+                            </div>
+                        </form>
                     </div>
                 </main>
             </article>

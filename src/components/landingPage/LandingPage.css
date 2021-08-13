@@ -1,0 +1,87 @@
+.landingPageWrapper{
+    margin: 1rem;
+}
+
+.landingSection{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.landingTitle{
+    text-align: center;
+    width: 80%;
+}
+
+.landingImageWrapper{
+    max-width: 100%;
+}
+
+.landingImageWrapper>img{
+    box-sizing: border-box;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+
+.quote{
+    color: var(--clr-text-primary);
+    padding: 1rem 1rem 0 1rem;
+    font-size: 0.9rem;
+}
+
+.cta{
+    margin-top: 2em;
+    border: 4px double var(--clr-primary-main);
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.ctaTabs{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.tabUnselected{
+    font-weight: 200;
+    box-shadow: 0px 1px 2px 2px rgba(137, 158, 158, 0.5) ;
+    border-bottom: 1px solid rgba(137, 158, 158, 0.3) inset;
+    background-color: rgba(82, 96, 100, 0.15);
+}
+
+.tabSelected{
+    font-weight: 700;
+    background-color: transparent;
+}
+
+.tab{
+    text-transform: uppercase;
+    flex-grow: 1;
+    padding: 0.5em 0;
+
+}
+
+@media only screen and (min-width: 860px){
+    .landingSection{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 5fr 1fr;
+    }
+    .landingImageWrapper{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .quote{
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+    .cta{
+        grid-column: 2/3;
+        grid-row: 1/3;
+        margin: 0 2rem;
+    }
+    .landingPageWrapper{
+        margin-top: 7rem;
+    }
+}

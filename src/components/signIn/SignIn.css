@@ -103,6 +103,10 @@
     padding: .5rem;
 }
 
+.pa3{
+    padding: 1.5;
+}
+
 .pa4 {
     padding: 2rem;
 }
@@ -285,6 +289,32 @@
     margin-left: auto;
 }
 
+
+.signInTitle{
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: left;
+    padding-left: 2em;
+}
+
+.input-box{
+    background-color: rgba(34, 37, 65, 0.25);
+    width: 15em;
+    margin-bottom: 0;
+}
+
+.signInWrapper{
+    border: none;
+}
+
+.loginErrorMsg{
+    display: none;
+    color: red;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+}
+
 @media screen and (min-width: 30em) {
     .pb3-ns {
         padding-bottom: 1rem;
@@ -300,7 +330,7 @@
     }
 }
 
-@media screen and (min-width: 30em) and (max-width: 60em) {
+@media screen and (max-width: 60em) {
     .w-50-m {
         width: 50%;
     }

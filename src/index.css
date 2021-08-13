@@ -1,17 +1,39 @@
+:root{
+  --clr-text-primary: black;
+  --clr-text-secondary: white;
+
+  --clr-primary-main: rgb(172, 194, 248);
+  --clr-primary-accent: rgb(120, 146, 243);
+  --clr-secondary-main: rgba(93,228,255,1);
+  --clr-secondary-accent: rgb(255, 118, 180);
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  background: white;
+  background: linear-gradient(to bottom, white 20rem, var(--clr-primary-accent));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover ;
+  min-height: 100%;
+  max-width: 100vw;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Jura', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background: rgb(93,228,255);
-background: radial-gradient(circle, rgba(93,228,255,1) 0%, rgba(187,255,255,1) 38%, rgba(93,228,255,1) 100%);
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
+
 
 button {
   cursor: pointer;
@@ -20,4 +42,16 @@ button {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@media only screen and (min-width: 860px){
+  html{
+    background: linear-gradient(to bottom, white 60%, var(--clr-primary-accent));
+  }
+  body{
+    max-width: 1440px;
+    max-height: 100vh;
+    overflow: hidden;
+
+  }
 }

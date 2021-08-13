@@ -1,7 +1,33 @@
-.Tilt{
-    margin-left: 4em;
+.logoWrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 2em 0;
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
-.Tilt-inner>img{
-    width: 100%;
+.landingTitle{
+    z-index: 0;
+    font-size: 1.5rem;
+    text-align: left !important;
+}
+
+.logo{
+    margin: 0;
+    width: 5em;
+    z-index: 1;
+    padding: 1em;
+}
+
+@media only screen and (min-width: 860px){
+    .logo{
+        width: 8rem;
+        padding-left: 2rem;
+    }
+    .landingTitle{
+        font-size: 2.5rem;
+    }
 }

@@ -1,21 +1,64 @@
 .nav{
     display: flex;
-    justify-content: center;
-    color: black;
-    font-size: 1.5em;
-    cursor: pointer;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 1.5rem 0;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top: 0;
+    left: 0;
+    max-width: 1440px;
+    padding: auto;
 }
+
 
 .btnsWrapper{
     display: flex;
     justify-content: flex-end;
 }
 
+.navMenu{
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: 200;
+    height: 110vh;
+    width: 100vw;
+    background-color: rgb(235, 250, 252);
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+.menu{
+    cursor: pointer;
+    margin-right: 1.3rem;
+    width: 1.7rem;
+    z-index: 3;
+    opacity: 45%;
+}
+
+.menuItem{
+    margin-top: 2em;
+    text-shadow: 4px 4px 2px var(--clr-secondary-accent);
+}
+
 .nav>p:hover{
+    cursor: pointer;
     color: gray ;
 }
 
 .nav>p{
+    cursor: pointer;
     padding: 0 1em;
     margin: 0.5em 0;
 }
@@ -27,4 +70,11 @@
 
 .pushRight {
     padding-left: auto;
+}
+
+.desktopMenu{
+    text-transform: uppercase;
+    margin: 1rem 0;
+    padding-right: 2rem;
+    font-weight: 700;
 }

@@ -1,32 +1,44 @@
 import React from 'react';
 import './Navigation.css';
+import menuIcon from './logoutLogo.png'
+import menuCloseIcon from './closeIcon.svg'
 
-const Navigation = ({onRouteChange, isSignedIn, isMenuOpen}) =>{
-    if (isMenuOpen){
-        if (isSignedIn){
-            return(
-                <nav className="nav" style={{display: 'flex', justifyContent: 'flex-end'}}>
-                    <p onClick={() => onRouteChange('SignOut')} className='f3 link dim black underline pa3 pointer'>Sign out</p>
-                </nav>
-            );
-        } else {
-            return(
-                <nav className="nav" >
-                    <h2>SMART-BRAIN</h2>
-                    <div className="btnsWrapper">
-                        <p onClick={() => onRouteChange('SignIn')} className='pushRight'>Sign In</p>
-                        <p onClick={() => onRouteChange('Register')} className=''>Register</p>
-                    </div>
-                </nav>
-            );
+const Navigation = ({onRouteChange, isMenuOpen, toggleMenu, menuRouteDirection}) =>{
+    const menuName = (input) =>{
+        switch(input){
+            default:
+            break
+            case "SignIn":
+                return "Register"
+            case "SignOut":
+                return "Sign Out"
+            case "Register":
+                return "Sign In"
         }
-    } else {
-        return (
-            <div className="menuWrapper">
-                <p>Menu</p>
+    }
+    if(window.innerWidth >= 860){
+        return(
+            <div className="nav desktopMenu">
+                <p onClick={() => onRouteChange(menuRouteDirection)} className='desktopMenu'>{menuName(menuRouteDirection)}</p>
             </div>
         )
-    }
+    } else {
+    if (isMenuOpen){
+        return(
+            <nav className="nav" style={{backdropFilter: "grayscale(100%)"}}>
+                <img src={menuCloseIcon} alt="Menu"onClick={() => toggleMenu()} className="menu" />
+                <div className="navMenu">
+                    <p onClick={() => onRouteChange(menuRouteDirection)} className='menuItem f3 link dim black underline pa3 pointer'>{menuName(menuRouteDirection)}</p>
+                </div>
+            </nav>
+        );
+    } else {
+        return (
+            <nav className="nav">
+                <img src={menuIcon} alt="Menu"onClick={() => toggleMenu()} className="menu" />
+            </nav>
+        )
+    }}
 }
 
-export default Navigation;
+export default Navigation
