@@ -37,7 +37,7 @@ By the end of the course I felt that I had learnt so much, not only from what ha
 
 <img alt="home page for desktop version" src="/screenshots/Screenshot_HomePage_Desktop.png" height="600" />
 
-<img alt="landing page for mobile version" src="/screenshots/Screenshot_LandingPage_Mobile.png" height="600" />  <img alt="home page for mobile version" src="/screenshots/Screenshot_HomePage_Mobile.png" height="600" />
+<img alt="landing page for mobile version" src="/screenshots/Screenshot_LandingPage_Mobile.png" height="600" />  <img alt="home page for mobile version" src="/screenshots/Screenshot_HomePage_Mobile.png" height="600" />  <img alt="menu for mobile version" src="/screenshots/Screenshot_Menu_Mobile.png" height="600" />
 
 
 
