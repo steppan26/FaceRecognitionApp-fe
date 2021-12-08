@@ -2,6 +2,11 @@
 
 https://smart-brain-faceapp1-front-end.herokuapp.com/
 
+Guest login info:
+
+- email: guest@mail.com
+- password: hireStephane
+
 This is the final state of a project that I worked on whilst following along **'The Complete Web Developer in 2021: Zero to Mastery"** course, by Andrei Naegoie, that I bought on Udemy.
 
 This course is what got me started in the world of web development and it guided me through a lot of extremely useful techniques and information. We worked on a number of small projects initially to learn core concepts before ultimately working on this project for over half of the course.
